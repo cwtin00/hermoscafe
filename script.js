@@ -1,6 +1,8 @@
 const menuData=[
   {id:'kahveler',name:'Kahveler',products:[['Espresso','Yoğun aromalı klasik espresso.','₺90'],['Americano','Espresso ve sıcak su ile yalın bir lezzet.','₺110'],['Caffè Latte','Espresso ve ipeksi süt köpüğü.','₺130'],['Caramel Macchiato','Karamel, espresso ve süt uyumu.','₺145']]},
   {id:'soguk-kahveler',name:'Soğuk Kahveler',products:[['Iced Americano','Buz üzerinde ferah espresso.','₺120'],['Iced Latte','Soğuk süt, espresso ve buz.','₺140'],['Cold Brew','Uzun demleme, yumuşak içim.','₺150'],['Iced Mocha','Çikolata, espresso ve soğuk süt.','₺155']]},
+  {id:'kahvalti',name:'Kahvaltı',products:[['Hermos Kahvaltı','Peynir çeşitleri, zeytin, yumurta, reçel ve sıcak ekmek.','₺390'],['Avokadolu Tost','Ekşi mayalı ekmek, avokado ve poşe yumurta.','₺240'],['Sıcak Kruvasan','Tereyağlı kruvasan, reçel ve tereyağı.','₺160']]},
+  {id:'ana-yemekler',name:'Ana Yemekler',products:[['Hermos Burger','Dana burger, karamelize soğan, özel sos ve patates.','₺310'],['Tavuklu Penne','Kremalı sos, mantar ve ızgara tavuk.','₺275'],['Izgara Tavuk','Mevsim sebzeleri ve özel baharatlarla.','₺290']]},
   {id:'tatlilar',name:'Tatlılar',products:[['San Sebastian','Akışkan dokulu fırınlanmış cheesecake.','₺190'],['Magnolia','Muz, bisküvi ve vanilyalı krema.','₺160'],['Çikolatalı Sufle','Sıcak çikolatalı kek ve dondurma.','₺195']]},
   {id:'icecekler',name:'Soğuk İçecekler',products:[['Ev Yapımı Limonata','Taze limon ve nane.','₺100'],['Çilekli Frozen','Çilek, buz ve meyve püresi.','₺135'],['Maden Suyu','Sade maden suyu.','₺50']]}
 ];
@@ -67,4 +69,18 @@ document.querySelector('#searchToggle').addEventListener('click',event=>{
   if(isOpen)setTimeout(()=>searchInput.focus(),150);
 });
 searchInput.addEventListener('input',renderProducts);
+
+let touchStartX=0;
+let touchStartY=0;
+document.addEventListener('touchstart',event=>{
+  if(event.touches.length!==1)return;
+  touchStartX=event.touches[0].clientX;
+  touchStartY=event.touches[0].clientY;
+},{passive:true});
+document.addEventListener('touchmove',event=>{
+  if(event.touches.length!==1||event.target.closest('.category-nav'))return;
+  const distanceX=event.touches[0].clientX-touchStartX;
+  const distanceY=event.touches[0].clientY-touchStartY;
+  if(Math.abs(distanceX)>Math.abs(distanceY)&&Math.abs(distanceX)>8)event.preventDefault();
+},{passive:false});
 renderProducts();
