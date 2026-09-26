@@ -12,3 +12,24 @@ footer{position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.
 
 .cetinweb-credit.menu-credit{position:relative;margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);color:#7f6f66;font-size:11px}
 .cetinweb-credit.menu-credit a{color:#c97c50;text-decoration:none;font-weight:700}.cetinweb-credit.menu-credit a:hover{text-decoration:underline}
+
+
+/* Mobil ekran sabitleme: yatay tasma ve istemsiz zoom engeli */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  touch-action: pan-y;
+}
+button, a, input, textarea, select, label {
+  touch-action: manipulation;
+}
+
+.category-nav {
+  touch-action: pan-x;
+  overscroll-behavior-x: contain;
+}

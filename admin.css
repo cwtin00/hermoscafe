@@ -60,3 +60,103 @@
 .cetinweb-credit.admin-credit a{color:#e7a06e;text-decoration:none;font-weight:700}.cetinweb-credit.admin-credit a:hover{text-decoration:underline}
 .login-screen{padding-top:48px}.admin-app{padding-top:30px}.sidebar{top:30px;height:calc(100vh - 30px)}
 @media(max-width:700px){.cetinweb-credit.admin-credit{font-size:10px;padding:6px 8px}.admin-app{padding-top:28px}}
+
+/* Mobile category cards - final readability fix */
+@media(max-width:850px){
+  .sidebar nav{
+    display:flex !important;
+    flex-wrap:nowrap !important;
+    align-items:stretch;
+    gap:10px;
+    overflow-x:auto !important;
+    overflow-y:hidden !important;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    touch-action:pan-x;
+    padding:16px 0 10px;
+  }
+  .cat-admin-row{
+    display:flex !important;
+    flex-direction:column;
+    flex:0 0 210px;
+    min-width:210px;
+    max-width:210px;
+    gap:6px;
+    padding:0;
+    scroll-snap-align:start;
+  }
+  .cat-admin-row .cat-admin-btn{
+    min-height:58px;
+    width:100%;
+    padding:12px 14px;
+    white-space:normal !important;
+    overflow:visible !important;
+    text-overflow:clip !important;
+    line-height:1.2;
+    font-size:15px;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+  }
+  .cat-admin-row .cat-admin-btn small{
+    flex:0 0 auto;
+    font-size:11px;
+  }
+  .cat-tools{
+    width:100%;
+    display:grid !important;
+    grid-template-columns:1fr 1fr 1.45fr;
+    gap:5px;
+  }
+  .cat-tools button{
+    width:100% !important;
+    min-width:0;
+    height:38px;
+    padding:0 8px;
+    font-size:0;
+    border:1px solid #ffffff1f;
+    background:#ffffff0b;
+  }
+  .cat-tools button:nth-child(1)::after{content:'↑';font-size:19px;}
+  .cat-tools button:nth-child(2)::after{content:'↓';font-size:19px;}
+  .cat-tools button:nth-child(3)::after{content:'Düzenle';font-size:11px;font-weight:600;}
+  .cat-tools button:disabled{opacity:.3}
+  .add-category-btn{
+    display:block;
+    width:100%;
+    min-height:48px;
+    margin-top:4px;
+    font-size:14px;
+  }
+}
+
+@media(max-width:430px){
+  .cat-admin-row{
+    flex-basis:190px;
+    min-width:190px;
+    max-width:190px;
+  }
+}
+
+
+/* Mobil ekran sabitleme: yatay tasma ve istemsiz zoom engeli */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  touch-action: pan-y;
+}
+button, a, input, textarea, select, label {
+  touch-action: manipulation;
+}
+
+#categoryList {
+  touch-action: pan-x;
+  overscroll-behavior-x: contain;
+}

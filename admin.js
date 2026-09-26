@@ -159,3 +159,21 @@ document.querySelector('#productForm').addEventListener('submit',async e=>{e.pre
 document.querySelector('#deleteProductBtn').onclick=async()=>{const id=document.querySelector('#editingProductId').value;if(!id||!activeCategory)return;if(!confirm('Bu ürünü tamamen silmek istiyor musun?'))return;await remove(ref(db,`menu/categories/${activeCategory}/products/${id}`));productEditor.close();toast('Ürün silindi')};
 
 document.querySelector('#importInitialBtn').onclick=async()=>{const snap=await get(ref(db,'menu/categories'));if(snap.exists()){toast('Firebase boş değil; mevcut veriye dokunulmadı.');return}if(!confirm('Mevcut örnek Hermos menüsü Firebase’e aktarılsın mı?'))return;await set(ref(db,'menu/categories'),initialMenu);toast('İlk menü Firebase’e aktarıldı')};
+
+
+// iOS/Android: pinch ve cift dokunma ile sayfanin zoom/oynamasini engelle.
+(function lockViewportZoom(){
+  const stopGesture = (event) => event.preventDefault();
+  document.addEventListener('gesturestart', stopGesture, { passive: false });
+  document.addEventListener('gesturechange', stopGesture, { passive: false });
+  document.addEventListener('gestureend', stopGesture, { passive: false });
+  document.addEventListener('touchmove', (event) => {
+    if (event.touches && event.touches.length > 1) event.preventDefault();
+  }, { passive: false });
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', (event) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) event.preventDefault();
+    lastTouchEnd = now;
+  }, { passive: false });
+})();

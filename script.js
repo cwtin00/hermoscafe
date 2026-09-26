@@ -182,3 +182,21 @@ document.addEventListener('touchmove', event => {
   const distanceY = event.touches[0].clientY - touchStartY;
   if (Math.abs(distanceX) > Math.abs(distanceY) && Math.abs(distanceX) > 8) event.preventDefault();
 }, { passive: false });
+
+
+// iOS/Android: pinch ve cift dokunma ile sayfanin zoom/oynamasini engelle.
+(function lockViewportZoom(){
+  const stopGesture = (event) => event.preventDefault();
+  document.addEventListener('gesturestart', stopGesture, { passive: false });
+  document.addEventListener('gesturechange', stopGesture, { passive: false });
+  document.addEventListener('gestureend', stopGesture, { passive: false });
+  document.addEventListener('touchmove', (event) => {
+    if (event.touches && event.touches.length > 1) event.preventDefault();
+  }, { passive: false });
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', (event) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) event.preventDefault();
+    lastTouchEnd = now;
+  }, { passive: false });
+})();
