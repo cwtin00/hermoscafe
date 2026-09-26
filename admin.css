@@ -1,0 +1,62 @@
+:root{--bg:#f4eee7;--paper:#fffaf4;--ink:#241610;--muted:#88756a;--brown:#371b10;--copper:#b9683e;--line:#e3d6ca;--green:#2f7c5a;--red:#a84239}*{box-sizing:border-box}body{margin:0;font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--ink)}button,input,select,textarea{font:inherit}button{cursor:pointer}.login-screen{min-height:100vh;background:radial-gradient(circle at 70% 20%,#4b2618,#170c08 55%);display:grid;place-items:center;padding:20px}.login-card{width:min(100%,420px);background:var(--paper);padding:38px;border:1px solid #d8c5b5;box-shadow:0 30px 80px #0006}.login-card img{display:block;width:180px;height:100px;object-fit:contain;margin:0 auto 8px}.login-card>p,.eyebrow,.admin-header span,.side-title span{font-size:10px;letter-spacing:.22em;font-weight:700;color:var(--copper)}.login-card h1{font:700 31px "Libre Baskerville",serif;margin:8px 0 28px}.login-card label,.editor label{display:grid;gap:7px;font-size:12px;font-weight:700;color:#5f4c42;margin:14px 0}.login-card input,.editor input,.editor textarea,.editor select{width:100%;border:1px solid var(--line);background:#fff;padding:13px 14px;outline:0;color:var(--ink)}.login-card input:focus,.editor input:focus,.editor textarea:focus,.editor select:focus{border-color:var(--copper)}.login-card button,.primary{border:0;background:var(--brown);color:#fff;padding:13px 17px;font-weight:700}.login-card>button{width:100%;margin-top:8px}.message.error{min-height:20px;color:var(--red);font-size:12px;margin-top:13px}.admin-app{min-height:100vh;display:grid;grid-template-columns:270px 1fr}.sidebar{position:sticky;top:0;height:100vh;background:#180c08;color:#fff;padding:22px 18px;display:flex;flex-direction:column}.side-logo{width:170px;height:90px;object-fit:contain;filter:brightness(0) invert(1)}.side-title{display:grid;gap:5px;padding:8px 8px 18px;border-bottom:1px solid #ffffff18}.side-title strong{font:700 19px "Libre Baskerville",serif}.sidebar nav{display:grid;gap:6px;padding:18px 0;overflow:auto}.cat-admin-btn{border:1px solid #ffffff17;background:#ffffff08;color:#cbb9ae;text-align:left;padding:12px 13px;display:flex;justify-content:space-between;align-items:center}.cat-admin-btn.active{border-color:#c47649;background:#9a5332;color:#fff}.cat-admin-btn small{opacity:.7}.add-category-btn{border:1px dashed #ffffff30;background:transparent;color:#d4b9a8;padding:11px}.side-bottom{margin-top:auto;display:grid;gap:10px}.side-bottom a,.side-bottom button{border:0;background:#ffffff08;color:#cdbbb0;text-decoration:none;padding:11px;text-align:center;font-size:12px}.admin-main{padding:36px clamp(22px,4vw,58px) 70px}.admin-header{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid #d7c8bb;padding-bottom:22px;margin-bottom:25px}.admin-header h1{font:700 clamp(28px,4vw,42px) "Libre Baskerville",serif;margin:7px 0 0}.notice{display:flex;justify-content:space-between;gap:20px;align-items:center;background:#fff5dc;border:1px solid #ead7a4;padding:18px;margin-bottom:22px}.notice div{display:grid;gap:4px}.notice span{font-size:12px;color:#75624f}.notice button{border:0;background:#8b5c24;color:#fff;padding:11px 14px;white-space:nowrap}.product-admin-list{display:grid;gap:10px}.admin-product{display:grid;grid-template-columns:70px minmax(0,1fr) auto auto auto;align-items:center;gap:15px;background:#fff;border:1px solid var(--line);padding:9px}.admin-product img{width:70px;height:64px;object-fit:cover;background:#eee}.admin-product h3{font-size:15px;margin:0 0 4px}.admin-product p{font-size:12px;color:var(--muted);margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:520px}.admin-product .price{font-weight:700;color:var(--copper)}.status{font-size:10px;font-weight:700;padding:5px 7px;background:#e9f4ee;color:var(--green)}.status.off{background:#f4e8e6;color:var(--red)}.order-buttons{display:flex;gap:4px}.order-buttons button,.edit-btn{border:1px solid var(--line);background:#faf5ef;padding:8px 10px;color:#5d493f}.edit-btn{font-size:12px}.admin-empty{border:1px dashed #d2c0b2;padding:45px;text-align:center;color:var(--muted);background:#ffffff66}.editor{width:min(92vw,580px);border:1px solid #d1bdad;background:var(--paper);padding:0;box-shadow:0 28px 90px #0007}.editor::backdrop{background:#160b08c9;backdrop-filter:blur(4px)}.editor form{padding:34px;position:relative}.editor h2{font:700 28px "Libre Baskerville",serif;margin:7px 0 24px}.editor .x{position:absolute;right:14px;top:10px;border:0;background:transparent;font-size:30px;color:#8a766a}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.editor small{display:block;color:var(--muted);font-size:11px}.switch-row{display:flex!important;align-items:center;justify-content:space-between}.switch-row input{width:18px;height:18px}.actions{display:flex;justify-content:flex-end;gap:8px;margin-top:24px}.actions button{border:1px solid var(--line);background:#fff;padding:11px 15px}.actions .primary{background:var(--brown);border-color:var(--brown)}.actions .danger{margin-right:auto;color:#fff;background:var(--red);border-color:var(--red)}.editor.small{width:min(92vw,430px)}.toast{position:fixed;right:22px;bottom:22px;background:#21120c;color:#fff;padding:13px 17px;box-shadow:0 16px 40px #0004;opacity:0;transform:translateY(10px);pointer-events:none;transition:.25s}.toast.show{opacity:1;transform:none}@media(max-width:850px){.admin-app{grid-template-columns:1fr}.sidebar{position:relative;height:auto}.sidebar nav{display:flex;overflow:auto}.cat-admin-btn{min-width:150px}.side-bottom{grid-template-columns:1fr 1fr;margin-top:14px}.admin-main{padding:26px 14px 60px}.admin-product{grid-template-columns:58px 1fr auto}.admin-product img{width:58px;height:58px}.admin-product .status,.admin-product .price{grid-row:2}.order-buttons{grid-column:1/3}.edit-btn{grid-column:3}.notice{align-items:flex-start;flex-direction:column}.two{grid-template-columns:1fr}.admin-header{align-items:flex-start;gap:15px}.admin-header .primary{padding:10px 12px}}
+
+/* Final category management */
+.sidebar nav{gap:7px}
+.cat-admin-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px;align-items:stretch}
+.cat-admin-row .cat-admin-btn{width:100%;min-width:0}
+.cat-admin-row.active .cat-admin-btn{border-color:#c47649;background:#9a5332;color:#fff}
+.cat-tools{display:flex;gap:3px}
+.cat-tools button{width:30px;border:1px solid #ffffff17;background:#ffffff08;color:#d9c4b7;font-size:12px}
+.cat-tools button:hover:not(:disabled){background:#ffffff18;color:#fff}
+.cat-tools button:disabled{opacity:.25;cursor:not-allowed}
+@media(max-width:850px){.sidebar nav{display:grid;overflow:visible}.cat-admin-row{grid-template-columns:minmax(0,1fr) auto}.cat-admin-btn{min-width:0}.cat-tools button{width:32px}}
+
+/* Mobile category strip - horizontal slider */
+@media(max-width:850px){
+  .sidebar{
+    overflow:hidden;
+  }
+  .sidebar nav{
+    display:flex !important;
+    flex-wrap:nowrap;
+    gap:8px;
+    width:100%;
+    max-width:100%;
+    overflow-x:auto !important;
+    overflow-y:hidden !important;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior-x:contain;
+    overscroll-behavior-y:none;
+    touch-action:pan-x;
+    scroll-snap-type:x proximity;
+    scrollbar-width:none;
+    padding:18px 0 12px;
+  }
+  .sidebar nav::-webkit-scrollbar{display:none}
+  .cat-admin-row{
+    flex:0 0 178px;
+    min-width:178px;
+    max-width:178px;
+    grid-template-columns:minmax(0,1fr) auto;
+    scroll-snap-align:start;
+  }
+  .cat-admin-row .cat-admin-btn{
+    min-width:0 !important;
+    width:100%;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .cat-tools{
+    flex:0 0 auto;
+  }
+  .add-category-btn{
+    width:100%;
+    margin-top:2px;
+  }
+}
+
+.cetinweb-credit.admin-credit{position:fixed;top:0;left:0;right:0;z-index:9999;text-align:center;padding:7px 12px;background:#100805;color:#cdbdaf;font-size:11px;letter-spacing:.03em;border-bottom:1px solid rgba(255,255,255,.08)}
+.cetinweb-credit.admin-credit a{color:#e7a06e;text-decoration:none;font-weight:700}.cetinweb-credit.admin-credit a:hover{text-decoration:underline}
+.login-screen{padding-top:48px}.admin-app{padding-top:30px}.sidebar{top:30px;height:calc(100vh - 30px)}
+@media(max-width:700px){.cetinweb-credit.admin-credit{font-size:10px;padding:6px 8px}.admin-app{padding-top:28px}}

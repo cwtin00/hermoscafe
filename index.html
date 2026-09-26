@@ -3,20 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-  <meta name="theme-color" content="#fbf7ef">
-  <meta name="description" content="Hermos Cafe dijital menüsü">
-  <title>Hermos Cafe | Menü</title>
-  <link rel="icon" type="image/png" href="assets/hermos-logo-transparent.png">
+  <meta name="theme-color" content="#160b08">
+  <meta name="description" content="Hermos Cafe Gediz dijital menü">
+  <title>Hermos Cafe | Dijital Menü</title>
+  <link rel="icon" type="image/png" href="image/hermos-logo-transparent.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="page-loader" id="pageLoader"><span></span><p>Hermos menü hazırlanıyor</p></div>
+
   <header class="site-header">
     <div class="header-inner">
-      <img class="logo" src="assets/hermos-logo-transparent.png" alt="Hermos Cafe">
-      <span class="digital-label">DİJİTAL MENÜ</span>
+      <img class="logo" src="image/hermos-logo-transparent.png" alt="Hermos Cafe">
+      <span class="digital-label">HERMOS · DİJİTAL MENÜ</span>
       <button class="search-button" id="searchToggle" type="button" aria-label="Menüde ara" aria-expanded="false">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
       </button>
@@ -24,51 +26,60 @@
     <div class="search-panel" id="searchPanel">
       <div class="search-field">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
-        <input id="searchInput" type="search" placeholder="Bu kategoride ara" autocomplete="off">
+        <input id="searchInput" type="search" placeholder="Seçili kategoride ara" autocomplete="off">
       </div>
     </div>
   </header>
 
   <section class="welcome" aria-label="Hermos Cafe">
-    <img src="assets/hermos-hero.png" alt="Kahve ve kruvasan sunumu">
+    <img src="image/hermos-hero.png" alt="Hermos Cafe sunumu">
     <div class="welcome-overlay"></div>
-    <div class="welcome-copy">
+    <div class="hero-grain"></div>
+    <div class="welcome-copy reveal">
       <span>HERMOS CAFE · GEDİZ</span>
-      <h1>Günün en güzel<br>molası.</h1>
-      <p>Kahve, mutfak ve tatlı seçeneklerimizi keşfedin.</p>
+      <h1>Keyfine eşlik eden<br><em>lezzetler.</em></h1>
+      <p>Kahveden tatlıya, kahvaltıdan özel tabaklara; Hermos'un seçkisini keşfet.</p>
+      <div class="hero-note"><i></i><span>Güncel fiyatlar ve ürünler bu menüde</span></div>
     </div>
   </section>
 
   <nav class="category-nav" id="categoryNav" aria-label="Menü kategorileri"></nav>
 
   <main class="menu-shell">
-    <div class="menu-heading">
+    <div class="menu-heading reveal">
       <div>
-        <p class="section-label">SEÇİLİ KATEGORİ</p>
-        <h2 id="activeCategoryTitle">Kahveler</h2>
+        <p class="section-label">MENÜDEN SEÇ</p>
+        <h2 id="activeCategoryTitle">Menü</h2>
       </div>
       <span id="productCount"></span>
     </div>
     <div class="product-list" id="productList"></div>
     <div class="empty-state" id="emptyState">
-      <strong>Ürün bulunamadı</strong>
-      <span>Başka bir kelimeyle tekrar deneyebilirsiniz.</span>
+      <strong>Bu bölümde ürün bulunamadı</strong>
+      <span>Başka bir kategori seçebilir veya aramayı temizleyebilirsin.</span>
+    </div>
+    <div class="database-error" id="databaseError" hidden>
+      <strong>Menüye şu an ulaşılamıyor.</strong>
+      <span>Lütfen kısa süre sonra tekrar deneyin.</span>
     </div>
   </main>
 
   <footer>
-    <img src="assets/hermos-logo-transparent.png" alt="Hermos Cafe">
-    <p>Fiyatlarımıza KDV dahildir.</p>
+    <img src="image/hermos-logo-transparent.png" alt="Hermos Cafe">
+    <p>Hermos Cafe · Gediz</p>
+    <small>Fiyatlarımıza KDV dahildir.</small>
+    <div class="cetinweb-credit menu-credit">Cetinweb tarafından geliştirilmiştir · <a href="https://cetinweb.online" target="_blank" rel="noopener noreferrer">cetinweb.online</a></div>
   </footer>
 
   <dialog class="product-modal" id="productModal">
     <button class="modal-close" id="modalClose" type="button" aria-label="Kapat">×</button>
+    <img class="modal-image" id="modalImage" src="image/urun-fotografi.jpg" alt="">
     <p class="modal-category" id="modalCategory"></p>
     <h3 id="modalName"></h3>
     <p class="modal-description" id="modalDescription"></p>
     <div class="modal-price"><span>Fiyat</span><strong id="modalPrice"></strong></div>
   </dialog>
 
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
