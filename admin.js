@@ -96,7 +96,12 @@ async function moveCategory(category,delta){
   if(swap<0||swap>=list.length)return;
   const a=list[index],b=list[swap];
   const ao=Number(a.order||index+1),bo=Number(b.order||swap+1);
-  await update(ref(db,'menu/categories'),{[a.id]:{order:bo},[b.id]:{order:ao}});
+  // Slash notation updates only the two order fields. Updating with
+  // {[id]: {order}} would replace the whole category and erase its products.
+  await update(ref(db,'menu/categories'),{
+    [`${a.id}/order`]:bo,
+    [`${b.id}/order`]:ao
+  });
   toast('Kategori sırası güncellendi');
 }
 function openCategoryEditor(category=null){
@@ -110,7 +115,19 @@ function openCategoryEditor(category=null){
   categoryEditor.showModal();
 }
 
-async function moveProduct(category,product,delta){const list=[...category.products];const index=list.findIndex(p=>p.id===product.id);const swap=index+delta;if(swap<0||swap>=list.length)return;const a=list[index],b=list[swap];const ao=Number(a.order||index+1),bo=Number(b.order||swap+1);await update(ref(db,`menu/categories/${category.id}/products`),{[a.id]:{...a,order:bo},[b.id]:{...b,order:ao}});toast('Ürün sırası güncellendi')}
+async function moveProduct(category,product,delta){
+  const list=[...category.products];
+  const index=list.findIndex(p=>p.id===product.id);
+  const swap=index+delta;
+  if(swap<0||swap>=list.length)return;
+  const a=list[index],b=list[swap];
+  const ao=Number(a.order||index+1),bo=Number(b.order||swap+1);
+  await update(ref(db,`menu/categories/${category.id}/products`),{
+    [`${a.id}/order`]:bo,
+    [`${b.id}/order`]:ao
+  });
+  toast('Ürün sırası güncellendi');
+}
 function openEditor(product=null){if(!categories.length){toast('Önce kategori oluştur');return}document.querySelector('#editorTitle').textContent=product?'Ürünü düzenle':'Ürün ekle';document.querySelector('#editingProductId').value=product?.id||'';document.querySelector('#productCategory').value=activeCategory||categories[0].id;document.querySelector('#productName').value=product?.name||'';document.querySelector('#productDescription').value=product?.description||'';document.querySelector('#productPrice').value=product?.price??'';document.querySelector('#productImage').value=product?.image||'';document.querySelector('#productActive').checked=product?.active!==false;document.querySelector('#deleteProductBtn').hidden=!product;productEditor.showModal()}
 
 onAuthStateChanged(auth,user=>{if(user){loginScreen.style.display='none';adminApp.hidden=false;startMenuListener()}else{loginScreen.style.display='grid';adminApp.hidden=true;if(menuUnsubscribe){menuUnsubscribe();menuUnsubscribe=null}}});
